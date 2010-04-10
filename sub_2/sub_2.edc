@@ -1,0 +1,537 @@
+/*  Copyright (C) 2008-2010 Thomas Bertani and Davide Andreoli
+ *
+ *  This file is part of calculator.
+ *  calculator. is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  calculator. is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with calculator.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+images {
+   image: "a.png" COMP;
+   image: "b.png" COMP;
+   image: "c.png" COMP;
+   image: "d.png" COMP;
+   image: "e.png" COMP;
+   image: "f.png" COMP;
+   image: "g.png" COMP;
+   image: "h.png" COMP;
+   image: "i.png" COMP;
+   image: "j.png" COMP;
+   image: "bg.png" COMP;
+   image: "k.png" COMP;
+   image: "l.png" COMP;
+   image: "m.png" COMP;
+   image: "n.png" COMP;
+   image: "o.png" COMP;
+   image: "p.png" COMP;
+   image: "q.png" COMP;
+   image: "r.png" COMP;
+   image: "s.png" COMP;
+   image: "t.png" COMP;
+   image: "u.png" COMP;
+   image: "v.png" COMP;
+   image: "w.png" COMP;
+   image: "x.png" COMP;
+   image: "y.png" COMP;
+   //image: "z.png" COMP;
+   image: "aa.png" COMP;
+   image: "ab.png" COMP;
+   image: "ac.png" COMP;
+   image: "ad.png" COMP;
+   image: "ae.png" COMP;
+   image: "m-c.png" COMP;
+   image: "m-minus.png" COMP;
+   image: "m-plus.png" COMP;
+   image: "m-r.png" COMP;
+}
+
+fonts {
+   font: "Vera.ttf" "vera";
+}
+
+data {
+   item: "name"        "Calculator";
+   item: "description" "An advanced scientific calculator";
+   item: "version"     "0.0.6";
+   item: "author"      "Thomas Bertani <sylar@anche.no> & DaveMDS <dave@gurumeditattion.it>";
+   item: "license"     "GPLv3";
+}
+
+collections {
+   group { name: "icon";
+      parts {
+         part { name: "icon";
+            type: IMAGE;
+            description { state: "default" 0.0;
+               image {
+                  normal: "c.png";
+               }
+            }
+         }
+      }
+   }
+
+   group { name: "main";
+      min: 231 256;
+      max: 480 640;//462 512;
+
+
+      parts {
+         part { name: "bg";
+            type: IMAGE;
+            mouse_events: 1;
+            description { state: "default" 0.0;
+               aspect: 0.9 0.9;
+               aspect_preference: BOTH;
+               image {
+                  normal: "bg.png";
+               }
+            }
+         }
+	part { name: "display0";
+            type: TEXT;
+            mouse_events: 0;
+            description { state: "default" 0.0;
+               color: 68 72 63 200;
+               rel1 {
+                  relative: 0.07 0.07;//0.09;
+                  to: "bg";
+               }
+               rel2 {
+                  relative: 0.93 0.15;//0.22;
+                  to: "bg";
+               }
+               text{
+                  font: "vera";
+                  size: 20;
+                  fit: 0 1;
+                  align: 1 0.5;
+                  text: "not used yet";
+               }
+            }
+         }
+	part { name: "display_";
+            type: TEXT;
+            mouse_events: 1;
+            description { state: "zo2" 0.0;
+               color: 68 72 63 200;
+               rel1 {
+                  relative: 0.05 0.17;//0.09;
+                  to: "bg";
+               }
+               rel2 {
+                  relative: 0.95 0.22;//0.22;
+                  to: "bg";
+               }
+               text{
+                  font: "vera";
+                  size: 20;
+                  fit: 0 1;
+                  align: 1 0.5;
+                  text: "";
+               }
+            }
+	}
+         part { name: "display";
+            type: TEXT;
+            mouse_events: 1;
+            description { state: "zo0" 0.0;
+               color: 68 72 63 200;
+               rel1 {
+                  relative: 0.05 0.15;//0.09;
+                  to: "bg";
+               }
+               rel2 {
+                  relative: 0.95 0.28;//0.22;
+                  to: "bg";
+               }
+               text{
+                  font: "vera";
+                  size: 20;
+                  fit: 0 1;
+                  align: 1 0.5;
+                  text: "";
+               }
+            }
+	    description {
+		  state: "zo1" 0.0;
+		  color: 68 72 63 200;
+		  rel1 {
+		    relative: 0.05 0.20;
+		    to: "bg";
+		  }
+		  rel2 {
+		    relative: 0.95 0.28;
+		    to: "bg";
+		  }
+               text{
+                  font: "vera";
+                  size: 15;
+                  fit: 0 1;
+                  align: 1 0.5;
+                  text: "";
+               }
+         }
+	    description {
+		  state: "zo2" 0.0;
+		  color: 68 72 63 200;
+		  rel1 {
+		    relative: 0.05 0.23;
+		    to: "bg";
+		  }
+		  rel2 {
+		    relative: 0.95 0.28;
+		    to: "bg";
+		  }
+               text{
+                  font: "vera";
+                  size: 15;
+                  fit: 0 1;
+                  align: 1 0.5;
+                  text: "";
+               }
+         }
+         }
+         
+         part { name: "num_bg";
+            type: RECT;
+            mouse_events: 0;
+            description { state: "default" 0.0;
+               color: 255 0 255 0;
+               rel1 {
+                  relative: 0.14  0.27;
+                  to: "bg";
+               }
+               rel2 {
+                  relative: 0.73 0.95;
+                  to: "bg";
+               }
+            }
+         }
+         
+#define BTN(pname, rel1x, rel1y, rel2x, rel2y) \
+         part { name: pname; \
+            type: IMAGE; \
+            description { state: "default" 0.0; \
+               align: 0.5 0.5; \
+               image { \
+                  normal: pname".png"; \
+               } \
+               rel1 { \
+                  relative: (rel1x+0.01)  (rel1y+0.01); \
+                  to: "num_bg"; \
+               } \
+               rel2 { \
+                  relative: (rel2x-0.01)  (rel2y-0.01); \
+                  to: "num_bg"; \
+               } \
+            } \
+            description { state: "pressed" 0.0; \
+               align: 0.5 0.5; \
+               image { \
+                  normal: pname".png"; \
+               } \
+               rel1 { \
+                  relative: (rel1x+0.01)  (rel1y+0.05); \
+                  to: "num_bg"; \
+               } \
+               rel2 { \
+                  relative: (rel2x-0.01)  (rel2y-0.05); \
+                  to: "num_bg"; \
+               } \
+            } \
+         }
+         
+         BTN("aa", -0.24,  0.05, 0.03, 0.25)
+         BTN("ab", -0.24,  0.25, 0.03, 0.45)
+         BTN("ac", -0.24, 0.45, 0.03, 0.65)
+         BTN("ad", -0.24, 0.65, 0.03, 0.85)
+         BTN("ae", -0.24,  0.85, 0.03, 1.05)
+	 
+         BTN("u", 0.03,  0.05, 0.30, 0.25)
+         BTN("v", 0.03,  0.25, 0.30, 0.45)
+         BTN("w", 0.03, 0.45, 0.30, 0.65)
+         BTN("x", 0.03, 0.65, 0.30, 0.85)
+         BTN("y", 0.03,  0.85, 0.30, 1.05)
+	 
+         BTN("p", 0.30,  0.05, 0.57, 0.25)
+         BTN("q", 0.30,  0.25, 0.57, 0.45)
+         BTN("r", 0.30, 0.45, 0.57, 0.65)
+         BTN("s", 0.30, 0.65, 0.57, 0.85)
+         BTN("t", 0.30,  0.85, 0.57, 1.05)
+	 
+         BTN("k", 0.57,  0.05, 0.84, 0.25)
+         BTN("l", 0.57,  0.25, 0.84, 0.45)
+         BTN("m", 0.57, 0.45, 0.84, 0.65)
+         BTN("n", 0.57, 0.65, 0.84, 0.85)
+         BTN("o", 0.57,  0.85, 0.84, 1.05)
+
+	 BTN("f", 0.84, 0.05, 1.11, 0.25)
+         BTN("g", 0.84, 0.25, 1.11, 0.45)
+         BTN("h", 0.84, 0.45, 1.11, 0.65)
+         BTN("i", 0.84, 0.65, 1.11, 0.85)
+         BTN("j", 0.84, 0.85, 1.11, 1.05)
+	 
+         BTN("a", 1.11, 0.05, 1.38, 0.25)
+         BTN("b", 1.11, 0.25, 1.38, 0.45)
+         BTN("c", 1.11, 0.45, 1.38, 0.65)
+         BTN("d", 1.11, 0.65, 1.38, 0.85)
+         BTN("e", 1.11, 0.85, 1.38, 1.05)
+
+      }
+
+#define BTN_PROG(__pname) \
+         program { name: "pressed_"__pname; \
+            signal: "mouse,down,*"; \
+            source: __pname; \
+            action: STATE_SET "pressed" 0.0; \
+            transition: SINUSOIDAL 0.2; \
+            target: __pname; \
+            after: "released_"__pname; \
+         } \
+         program { name: "released_"__pname; \
+            source: ""; \
+            action: STATE_SET "default" 0.0;\
+            transition: SINUSOIDAL 0.2; \
+            target: __pname; \
+         }
+      
+      programs {
+
+         BTN_PROG("a")
+         BTN_PROG("b")
+         BTN_PROG("c")
+         BTN_PROG("d")
+         BTN_PROG("e")
+         BTN_PROG("f")
+         BTN_PROG("g")
+         BTN_PROG("h")
+         BTN_PROG("i")
+         BTN_PROG("j")
+         BTN_PROG("k")
+         BTN_PROG("l")
+         BTN_PROG("m")
+         BTN_PROG("n")
+         BTN_PROG("o")
+         BTN_PROG("p")
+         BTN_PROG("q")
+         BTN_PROG("r")
+         BTN_PROG("s")
+         BTN_PROG("t")
+         BTN_PROG("u")
+         BTN_PROG("v")
+         BTN_PROG("w")
+         BTN_PROG("x")
+         BTN_PROG("y")
+         BTN_PROG("aa")
+         BTN_PROG("ab")
+         BTN_PROG("ac")
+         BTN_PROG("ad")
+         BTN_PROG("ae")
+         //BTN_PROG("z")
+         
+        program { name: "over_i";
+            signal: "mouse,*";
+            source: "i";
+            action: SIGNAL_EMIT "i_over" "i";
+         }
+         program { name: "up_c";
+            signal: "mouse,up,*";
+            source: "c";
+            action: SIGNAL_EMIT "c_up" "c";
+         }
+         program { name: "clicked_a";
+            signal: "mouse,down,*";
+            source: "a";
+            action: SIGNAL_EMIT "a" "a";
+         }
+         program { name: "clicked_b";
+            signal: "mouse,down,*";
+            source: "b";
+            action: SIGNAL_EMIT "b" "b";
+         }
+         program { name: "over_c";
+            signal: "mouse,down,*";
+            source: "c";
+            action: SIGNAL_EMIT "c" "c";
+         }
+         /*program { name: "clicked_e";
+            signal: "mouse,up,*";//down
+            source: "e";
+            action: SIGNAL_EMIT "2" "e";
+         }*/
+         program { name: "clicked_d";
+            signal: "mouse,down,*";
+            source: "d";
+            action: SIGNAL_EMIT "d" "d";
+         }
+         program { name: "clicked_e";
+            signal: "mouse,down,*";
+            source: "e";
+            action: SIGNAL_EMIT "e" "e";
+         }
+         /*program { name: "over_5";
+            signal: "mouse,*";
+            source: "5";
+            action: SIGNAL_EMIT "o5" "5";
+         }*/
+         program { name: "clicked_f";
+            signal: "mouse,down,*";
+            source: "f";
+            action: SIGNAL_EMIT "f" "f";
+         }
+         program { name: "clicked_g";
+            signal: "mouse,down,*";
+            source: "g";
+            action: SIGNAL_EMIT "g" "g";
+         }
+         program { name: "clicked_h";
+            signal: "mouse,down,*";
+            source: "h";
+            action: SIGNAL_EMIT "h" "h";
+         }
+         program { name: "clicked_i";
+            signal: "mouse,down,*";
+            source: "i";
+            action: SIGNAL_EMIT "i" "i";
+         }
+         program { name: "clicked_j";
+            signal: "mouse,down,*";
+            source: "j";
+            action: SIGNAL_EMIT "j" "j";
+         }
+         program { name: "clicked_k";
+            signal: "mouse,down,*";
+            source: "k";
+            action: SIGNAL_EMIT "k" "k";
+         }
+         program { name: "clicked_l";
+            signal: "mouse,down,*";
+            source: "l";
+            action: SIGNAL_EMIT "l" "l";
+         }
+         program { name: "clicked_m";
+            signal: "mouse,down,*";
+            source: "m";
+            action: SIGNAL_EMIT "m" "m";
+         }
+         program { name: "clicked_n";
+            signal: "mouse,down,*";
+            source: "n";
+            action: SIGNAL_EMIT "n" "n";
+         }
+         program { name: "clicked_o";
+            signal: "mouse,down,*";
+            source: "o";
+            action: SIGNAL_EMIT "o" "o";
+         }
+         program { name: "clicked_p";
+            signal: "mouse,down,*";
+            source: "p";
+            action: SIGNAL_EMIT "p" "p";
+         }
+         program { name: "clicked_q";
+            signal: "mouse,down,*";
+            source: "q";
+            action: SIGNAL_EMIT "q" "q";
+         }
+         program { name: "clicked_r";
+            signal: "mouse,down,*";
+            source: "r";
+            action: SIGNAL_EMIT "r" "r";
+         }
+         program { name: "clicked_s";
+            signal: "mouse,down,*";
+            source: "s";
+            action: SIGNAL_EMIT "s" "s";
+         }
+         program { name: "clicked_t";
+            signal: "mouse,down,*";
+            source: "t";
+            action: SIGNAL_EMIT "t" "t";
+         }
+         program { name: "clicked_u";
+            signal: "mouse,down,*";
+            source: "u";
+            action: SIGNAL_EMIT "u" "u";
+         }
+         program { name: "clicked_v";
+            signal: "mouse,down,*";
+            source: "v";
+            action: SIGNAL_EMIT "v" "v";
+         }
+         program { name: "clicked_w";
+            signal: "mouse,down,*";
+            source: "w";
+            action: SIGNAL_EMIT "w" "w";
+         }
+         program { name: "clicked_x";
+            signal: "mouse,down,*";
+            source: "x";
+            action: SIGNAL_EMIT "x" "x";
+         }
+         program { name: "clicked_y";
+            signal: "mouse,down,*";
+            source: "y";
+            action: SIGNAL_EMIT "y" "y";
+         }
+         /*program { name: "clicked_z";
+            signal: "mouse,down,*";
+            source: "z";
+            action: SIGNAL_EMIT "z" "z";
+         }*/
+         program { name: "clicked_aa";
+            signal: "mouse,down,*";
+            source: "aa";
+            action: SIGNAL_EMIT "aa" "aa";
+         }
+         program { name: "clicked_ab";
+            signal: "mouse,down,*";
+            source: "ab";
+            action: SIGNAL_EMIT "ab" "ab";
+         }
+         program { name: "clicked_ac";
+            signal: "mouse,down,*";
+            source: "ac";
+            action: SIGNAL_EMIT "ac" "ac";
+         }
+         program { name: "clicked_ad";
+            signal: "mouse,down,*";
+            source: "ad";
+            action: SIGNAL_EMIT "ad" "ad";
+         }
+         program { name: "clicked_ae";
+            signal: "mouse,down,*";
+            source: "ae";
+            action: SIGNAL_EMIT "ae" "ae";
+         }
+	 program { name: "zo0";
+            signal: "zo0";
+            //source: "display";
+            action: STATE_SET "zo0" 0.0;
+	    target: "display";
+         }
+	 program { name: "zo1";
+            signal: "zo1";
+            //source: "display";
+            action: STATE_SET "zo1" 0.0;
+	    target: "display";
+         }
+	 program { name: "zo2";
+            signal: "zo2";
+            //source: "display";
+            action: STATE_SET "zo2" 0.0;
+	    target: "display";
+         }
+      }
+   }
+}
